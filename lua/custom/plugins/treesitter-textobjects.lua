@@ -1,29 +1,18 @@
 return {
-  { -- Extend nvim-treesitter opts with textobjects config.
-    -- Lazy.nvim merges opts from all specs for the same plugin,
-    -- so this is applied alongside the treesitter opts in init.lua.
+  { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    main = 'nvim-treesitter.configs',
+    -- See `:help nvim-treesitter`
     opts = {
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' },
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = { enable = true, disable = { 'ruby' } },
       textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            -- Function textobjects with different mappings to avoid conflicts with mini.ai
-            ['aF'] = '@function.outer',
-            ['iF'] = '@function.inner',
-            -- Class textobjects
-            ['aC'] = '@class.outer',
-            ['iC'] = '@class.inner',
-          },
-          selection_modes = {
-            ['@function.outer'] = 'V', -- linewise
-            ['@function.inner'] = 'v', -- characterwise for better control
-            ['@class.outer'] = 'V', -- linewise
-            ['@class.inner'] = 'v', -- characterwise
-          },
-          include_surrounding_whitespace = false,
-        },
         move = {
           enable = true,
           set_jumps = true,
@@ -39,7 +28,7 @@ return {
       },
     },
   },
-  { -- Declare the textobjects plugin itself as a dependency of treesitter
+  { -- Needed for textobjects move queries
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
 }
