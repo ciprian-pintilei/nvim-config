@@ -1,6 +1,9 @@
 return {
   'echasnovski/mini.nvim',
   config = function()
+    -- Icons (used by snacks picker, explorer, etc.)
+    require('mini.icons').setup()
+
     -- Better Around/Inside textobjects
     --
     -- Examples:
