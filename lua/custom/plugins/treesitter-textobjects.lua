@@ -2,15 +2,7 @@ return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      }
-    end,
+    lazy = false,
   },
   { -- Needed for textobjects move queries
     'nvim-treesitter/nvim-treesitter-textobjects',
