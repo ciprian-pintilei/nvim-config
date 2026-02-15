@@ -3,6 +3,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     lazy = false,
+    config = function()
+      require('nvim-treesitter').install { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' }
+    end,
   },
   { -- Needed for textobjects move queries
     'nvim-treesitter/nvim-treesitter-textobjects',

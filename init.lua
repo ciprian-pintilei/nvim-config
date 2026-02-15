@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 -- [[Setting options]]
 -- Set <space> as the leader key
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -147,5 +148,11 @@ require('lazy').setup({
   debug = true,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python' },
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
