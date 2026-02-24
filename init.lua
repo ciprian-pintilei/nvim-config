@@ -75,6 +75,9 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 vim.o.confirm = true
 
+-- Allow per-project .nvim.lua config files
+vim.o.exrc = true
+
 -- [[ Keymaps & Autocommands ]]
 require 'custom.keymaps'
 
